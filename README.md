@@ -1,11 +1,11 @@
 # vue_postgres
-Прототип отображения данных из базы PostgreSQL через Vue. Бэкенд на PHP, сервер Apache2.
+Прототип отображения данных из базы `PostgreSQL` через `Vue`. Бэкенд на `PHP`, сервер `Apache2`.
 # Использование
-Настройки сервера Ubuntu проще выполняются если залогиниться как root:
+Настройки сервера `Ubuntu` проще выполняются если залогиниться как `root`:
 ```
 sudo -i
 ```
-Установка PostgreSQL, PHP, Apache2 на Ubuntu сервере:
+Установка `PostgreSQL`, `PHP`, `Apache2` на `Ubuntu` сервере:
 ```
 apt update
 apt install postgresql php php-pgsql apache2
