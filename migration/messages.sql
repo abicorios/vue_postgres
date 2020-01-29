@@ -10,6 +10,8 @@ CREATE TABLE "public"."messages" (
 ) WITH (oids = false);
 
 INSERT INTO "messages" ("id", "message") VALUES
-(1,	'Hello World');
+(1,	'Hello World'),
+(2,	'Second message'),
+(3,	'Third message');
 
--- 2020-01-28 16:09:23.997666+00
+-- 2020-01-29 11:21:11.66451+00

@@ -6,7 +6,9 @@
 </head>
 <body>
 <div id="app">
+    <p>Введите id сообщения: <input type="text" v-on:input="changeMessage"></p>
     <p>{{message}}</p>
+    <p style="color: red">{{error}}</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
@@ -14,17 +16,32 @@
     new Vue({
         el: '#app',
         data: {
-            message: ''
+            message: '',
+            error: ''
         },
-        created() {
-            fetch('api.php')
-                .then((response) => {
-                    return response.json();
-                })
-                .then((messages) => {
-                    this.message = messages.message;
-                })
-        }
+        methods: {
+            changeMessage: function(event){
+                if(event.target.value==''){
+                    this.error='';
+                    this.message='';
+                    return;
+                }
+                fetch(`api.php?id=${event.target.value}`)
+                    .then((response)=>{
+                        return response.json()
+                    })
+                    .then((messages)=>{
+                        if(messages.error){
+                            this.error=messages.error;
+                            this.message = '';
+                        } else {
+                            this.message = messages.message;
+                            this.error = '';
+                        }
+                    })
+            }
+        },
+
     })
 </script>
 </body>
