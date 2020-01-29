@@ -2,7 +2,9 @@
 $connect = new PDO('pgsql:host=localhost;port=5432;dbname=test;user=test;password=test');
 function check_input($value){
     global $connect;
-    if(preg_match('!\W!',$value)){
+    if(preg_match('!\W|^$!',$value)){
+        //Если в качестве id ввести # то на бэкенд приходит пустая строка
+        //Полностью пустые строки фильтруются на фронте, чтобы не мешать редактировать id (очистка строки для редактирования это не ошибка)
         return 'sql injection';
     }
     if(preg_match('![a-zA-Z]!',$value)){
